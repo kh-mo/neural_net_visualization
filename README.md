@@ -6,7 +6,7 @@ This repository is implemented by Pytorch.
 - [Striving for Simplicity: The All Convolutional Net](https://arxiv.org/abs/1412.6806), accepted ICLR 2015
 
 ## result
-| cat(285) | castle(483) |
+Information | cat(285) | castle(483) |
 :---: | :---: | :---: |
 Original Image  | <img src = 'input_image/cat.jpg'> | <img src = 'input_image/castle.jpg'> |
 Guided Backpropagation  | <img src = 'saved_image/cat.jpg'> | <img src = 'saved_image/castle.jpg'> |
