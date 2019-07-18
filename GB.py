@@ -70,7 +70,7 @@ if __name__ == "__main__":
     guided_backprop_tensor = guided_model.get_gradient(img, target_class)
 
     # save image
-    save_image(guided_backprop_tensor, save_path="saved_image", save_name=args.category)
+    save_image(guided_backprop_tensor, save_path="saved_image", save_name="GB_"+args.category)
 
 
 
