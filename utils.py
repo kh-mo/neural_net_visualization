@@ -8,13 +8,14 @@ from torch.autograd import Variable
 def get_input(idx):
     example_list = (('input_image/cat.jpg', 285), ('input_image/castle.jpg', 483))
     img_path = example_list[idx][0]
+    target_class = example_list[idx][1]
 
     # Read image
     img = preprocess_image(img_path)
 
     # Load pretrained net
     pretrained_model = models.alexnet(pretrained=True)
-    return img, pretrained_model
+    return img, target_class, pretrained_model
 
 def preprocess_image(img_path):
     original_image = Image.open(img_path).convert('RGB')
