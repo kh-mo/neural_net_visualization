@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from PIL import Image
 
@@ -21,7 +22,8 @@ def preprocess_image(img_path):
     original_image = Image.open(img_path).convert('RGB')
     original_image.thumbnail((512, 512))
     im_as_arr = np.float32(original_image)
-    im_as_arr = im_as_arr.transpose(2, 0, 1)  # Convert array to D,W,H
+    # Convert array to D,W,H
+    im_as_arr = im_as_arr.transpose(2, 0, 1)
     # Convert to float tensor
     im_as_ten = torch.from_numpy(im_as_arr).float()
     # Add one more channel to the beginning. Tensor shape = 1,3,224,224
@@ -30,6 +32,19 @@ def preprocess_image(img_path):
     im_as_var = Variable(im_as_ten, requires_grad=True)
     return im_as_var
 
-def save_image(tensor, save_path):
-    return
+def save_image(tensor, save_path, save_name):
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+
+    # 0-1 normalize
+    tensor /= tensor.max()
+
+    # Convert array to D,W,H
+    tensor = tensor.transpose(1, 2, 0)
+    tensor = (tensor * 255).astype(np.uint8)
+    tensor = Image.fromarray(tensor)
+
+    # save image
+    tensor.save(os.path.join(save_path, save_name+'.jpg'))
+
 
