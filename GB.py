@@ -5,14 +5,23 @@ https://arxiv.org/abs/1412.6806
 accepted iclr 2015
 '''
 
-class GuidedBackpropagation():
+import argparse
+from utils import get_input
+
+class GuidedBackprop():
     def __init__(self, model):
         self.model = model
         self.model.eval()
 
 if __name__ == "__main__":
+    # get input index
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--category", type=str, default="cat")
+    args = parser.parse_args()
+    target_image_idx = 0 if args.category == "cat" else 1
+
     # get needed imformation
-    origin_img, pretrained_model = get_input()
+    img, pretrained_model = get_input(target_image_idx)
 
     # GuidedBackprop modeling
     guided_model = GuidedBackprop()
