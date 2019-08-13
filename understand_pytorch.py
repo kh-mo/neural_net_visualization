@@ -10,6 +10,11 @@ pretrained_model의 중간 모듈을 낚아채어(hooking) 사용하는 방법�
               |  e  |
                -----
 
+J. T. Springenberg, A. Dosovitskiy, T. Brox, and M. Riedmiller.
+Striving for Simplicity: The All Convolutional Net,
+https://arxiv.org/abs/1412.6806
+
+pytorch 기본 설정은 위 페이퍼 figure 1의 backpropagation 부분에 해당한다
 '''
 
 import torch
